@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+
+  # *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+  # *-*-*-*-*-*-*-*   Jenkins   *-*-*-*-*-*-*-*-*
+  # *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+  jenkins:
+    container_name: jenkins
+    
+    build:
+      context: . #path to the dockerfile, compose file relatively
+      dockerfile: jenkins.Dockerfile
+
+    networks:
+      - jenkins
+
+    ports:
+      - 8083:8080
+
+    volumes:
+      - jenkins:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    privileged: true
+
+networks:
+  jenkins:
+    driver: bridge
+
+volumes:
+  jenkins:
+    external: true
