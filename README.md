@@ -1,6 +1,6 @@
 # Docker Backups
 
-## /Jenkins
+## ./Jenkins
 This repo contains the Dockerfile and docker-compose of my Jenkins lab.  
 
 ### jenkins.Dockerfile
