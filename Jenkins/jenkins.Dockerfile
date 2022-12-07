@@ -6,7 +6,7 @@ USER root
 
 
 # Add the localhost docker GID as env var
-ARG DOCKER_GID=121
+ARG DOCKER_GID=998
 
 
 # System tools installation
@@ -34,7 +34,7 @@ RUN echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
     https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
     tee /etc/apt/sources.list.d/hashicorp.list
 
-RUN apt-get install -y terraform
+#RUN apt-get install -y terraform
 
 
 # yq installation
@@ -50,7 +50,7 @@ RUN curl -L https://github.com/docker/compose/releases/download/v2.0.1/docker-co
 
 
 # Change the GID of the docker group of the container to the same GID of the localhost
-RUN groupmod -g $DOCKER_GID docJenkins plugins installation
+RUN groupmod -g $DOCKER_GID jenkins
 
 # Jenkins plugins installation
 RUN jenkins-plugin-cli --plugins \
